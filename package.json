@@ -1,0 +1,20 @@
+{
+  "name": "jev-wrapped",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Telegram channel X-ray: paste a public channel, Jev judges a year of posts, you get a card. One Cloudflare Worker on the free plan.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Ivan Habor",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "wrangler d1 migrations apply jev-wrapped --local && wrangler dev --port ${PORT:-5190} --var WRAPPED_DAILY_LIMIT:0 --var WRAPPED_DAILY_BUDGET_USD:0",
+    "deploy": "wrangler d1 migrations apply jev-wrapped --remote && wrangler deploy",
+    "test": "node --test test/"
+  },
+  "devDependencies": {
+    "wrangler": "^4.135.0"
+  }
+}

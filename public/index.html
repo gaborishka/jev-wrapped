@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- head -->
+    <meta name="theme-color" content="#0b0e13" />
+    <link rel="icon" href="/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="/">
+        <svg viewBox="0 0 28 28" width="22" height="22" aria-hidden="true">
+          <rect x="2" y="3" width="24" height="5" rx="1.5" fill="#4f8ef7" />
+          <rect x="2" y="11.5" width="17" height="5" rx="1.5" fill="#ffd84d" />
+          <rect x="2" y="20" width="9" height="5" rx="1.5" fill="#ff5c5c" />
+        </svg>
+        <span>jev wrapped</span>
+      </a>
+      <button id="lang" type="button" class="quiet"></button>
+    </header>
+
+    <main>
+      <section id="ask">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="eyebrow" data-t="eyebrow"></p>
+            <h1 data-t="title"></h1>
+            <p class="lead" data-t="lead"></p>
+            <form id="form">
+              <label class="field">
+                <span class="field-prefix" aria-hidden="true">t.me/</span>
+                <input id="channel" name="channel" autocomplete="off" autocapitalize="none" spellcheck="false" required />
+              </label>
+              <button type="submit" class="primary" data-t="go"></button>
+            </form>
+            <p id="problem" class="problem" role="alert" hidden></p>
+            <p id="totals" class="totals" hidden></p>
+          </div>
+          <a id="sample" class="sample" hidden>
+            <span id="sample-tag" class="sample-tag"></span>
+            <span id="sample-card" class="card"></span>
+          </a>
+        </div>
+
+        <section id="home" class="home" hidden>
+          <div class="col-head"><h3 data-t="home.title"></h3><span data-t="home.note"></span></div>
+          <div id="channels" class="channels"></div>
+        </section>
+
+        <ol class="steps">
+          <li><span class="step-n">01</span><b data-t="steps.read.title"></b><p data-t="steps.read.text"></p></li>
+          <li><span class="step-n">02</span><b data-t="steps.judge.title"></b><p data-t="steps.judge.text"></p></li>
+          <li><span class="step-n">03</span><b data-t="steps.card.title"></b><p data-t="steps.card.text"></p></li>
+        </ol>
+      </section>
+
+      <section id="run" hidden>
+        <div class="run-title">
+          <h2 id="stage"></h2>
+          <span id="run-channel" class="mono dim"></span>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <span class="kpi-label" data-t="kpi.posts"></span>
+            <div class="kpi-value"><b id="c-done">0</b><small id="c-pages"></small></div>
+            <div class="progress"><i id="bar"></i></div>
+            <span id="c-split" class="kpi-note"></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label" data-t="kpi.speed"></span>
+            <div class="kpi-value"><b id="c-rate">0.0</b><small data-t="kpi.perSecond"></small></div>
+            <div id="spark" class="spark" aria-hidden="true"></div>
+            <span id="c-working" class="kpi-note"></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label" data-t="kpi.latency"></span>
+            <div class="kpi-value"><b id="c-median">—</b><small data-t="kpi.ms"></small></div>
+            <span id="c-p95" class="kpi-note"></span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label" data-t="kpi.cost"></span>
+            <div class="kpi-value"><b id="c-cost">$0.0000</b></div>
+            <span id="c-tokens" class="kpi-note"></span>
+          </div>
+        </div>
+
+        <div class="bench">
+          <aside>
+            <div class="col-head"><h3 data-t="feed.title"></h3><span id="feed-count"></span></div>
+            <div id="feed" class="feed"></div>
+
+            <div class="request">
+              <div class="request-head"><b data-t="request.title"></b><span id="request-model" class="mono">jev-1.13</span></div>
+              <ul>
+                <li><span class="mono">choice</span><span data-t="request.kind"></span></li>
+                <li><span class="mono">noul</span><span data-t="request.ad"></span></li>
+                <li><span class="mono">noul</span><span data-t="request.clickbait"></span></li>
+                <li><span class="mono">noul</span><span data-t="request.pressure"></span></li>
+              </ul>
+              <p data-t="request.note"></p>
+            </div>
+
+            <p class="aside-note"><b id="c-media">0</b> <span data-t="feed.media"></span></p>
+          </aside>
+
+          <div>
+            <div class="col-head"><h3 data-t="map.title"></h3><span data-t="map.note"></span></div>
+            <div id="tiles" class="tiles"></div>
+
+            <div class="signals">
+              <div class="signal" data-signal="ad"><span data-t="metrics.ad"></span><i><u></u></i><b>0%</b></div>
+              <div class="signal" data-signal="clickbait"><span data-t="metrics.clickbait"></span><i><u></u></i><b>0%</b></div>
+              <div class="signal" data-signal="pressure"><span data-t="metrics.pressure"></span><i><u></u></i><b>0%</b></div>
+            </div>
+
+            <div class="col-head"><h3 data-t="last.title"></h3><span id="answers-count"></span></div>
+            <div id="last" class="last"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result" hidden>
+        <div class="result-grid">
+          <div id="card" class="card"></div>
+          <div class="side">
+            <div id="receipt" class="receipt"></div>
+            <div class="actions">
+              <button id="download" type="button" class="primary" data-t="download"></button>
+              <button id="copy" type="button" class="quiet" data-t="copyLink"></button>
+              <button id="again" type="button" class="quiet" data-t="again"></button>
+              <a class="quiet button" href="/" data-t="another"></a>
+            </div>
+            <p id="cached" class="cached" data-t="cached" hidden></p>
+            <div id="details" class="details"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot"><span data-t="foot"></span> <a class="byline" href="https://ivanhabor.com" target="_blank" rel="noopener">by Ivan Habor</a></footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
